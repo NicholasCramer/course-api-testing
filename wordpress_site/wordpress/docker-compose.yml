@@ -1,0 +1,33 @@
+services:
+
+  wordpress:
+    image: wordpress:${WORDPRESS_VERSION:-latest}
+    container_name: ${COMPOSE_PROJECT_NAME:-wordpress}
+    volumes:
+      - ${WORDPRESS_DATA_DIR:-./wordpress}:/var/www/html
+    environment:
+      - WORDPRESS_DB_HOST=mysql:3306
+      - WORDPRESS_DB_USER=wordpress
+      - WORDPRESS_DB_PASSWORD=wordpress
+      - WORDPRESS_DB_NAME=wordpress
+    depends_on:
+      - mysql
+    restart: always
+    ports:
+        - 80:80
+
+  mysql:
+    image: mysql:8.0.27
+    container_name: ${COMPOSE_PROJECT_NAME}_mysql
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=somewordpress
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=wordpress
+      - MYSQL_PASSWORD=wordpress
+    restart: always
+    ports:
+      - 3838:3306
+
+
