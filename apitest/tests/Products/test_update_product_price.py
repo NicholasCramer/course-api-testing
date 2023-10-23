@@ -96,7 +96,7 @@ def test_adding_sale_price_should_set_on_sale_flag_true():
 
 @pytest.mark.tcid63
 @pytest.mark.tcid64
-def test_update_on_sale_field_buy_updating_sale_price():
+def test_update_on_sale_field_by_updating_sale_price():
     """
     Two test case.
     First case update the 'sale_price > 0' and verify the field changes to 'on_sale=True'.
