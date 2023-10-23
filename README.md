@@ -1,7 +1,7 @@
 # course-api-testing
  Learning API testing with Pytest - Udemy Course: https://www.udemy.com/course/backend-api-testing-with-python
 
-# Set up instructions
+## Set up instructions
 
 ### Step 1:
 Install virtual environment
@@ -62,5 +62,22 @@ Setting environment variables such as credentials:
 	SET WC_KEY='Value'
 	SET WC_SECRET='Value'
 ```
+
+## Pytest - running tests
+
+All Python code is in the apitest directory
+`cd apitest/tests`
+
+You can run all tests with the command `pytest`
+
+You can run groups of tests by the it's marker: 'regression', 'smoke', 'products' etc: `pytest -m smoke`
+
+You can run individual test cases by their marker as well: `pytest -m tcid40`
+
+To generate html test reports using the pytest-html plugin:
+```
+pytest --html=report.html --self-contained-html
+```
+
 
 
