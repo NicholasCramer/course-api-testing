@@ -63,7 +63,7 @@ Setting environment variables such as credentials:
 	SET WC_SECRET='Value'
 ```
 
-## Pytest - running tests
+## Pytest - running tests locally
 
 All Python code is in the apitest directory
 `cd apitest/tests`
@@ -79,5 +79,25 @@ To generate html test reports using the pytest-html plugin:
 pytest --html=report.html --self-contained-html
 ```
 
+
+## Running tests in a Docker container
+
+### Running docker container in interactive session
+
+Build the image from a dockerfile and provide an image name: `docker build -t api_test .`
+
+Run image in container: `docker run --name api_test -it -v C:/Users/nick_/Projects/course-api-testing/apitest:/automation/apitest api_test /bin/bash`
+
+Set credentials as environment variables: `SOURCE env_docker.sh`
+
+Change directory to test directory defined above (i.e. apitest)
+
+Run Pytest commands as usual (i.e. pytest -m products)
+
+## Running docker container detached
+
+Execute batch file that creates the image/container and sets all variables. Include the Pytest marker you want to run: `run_in_docker.bat products`
+
+Output shows test results and that an html report was created in apitest/results
 
 
