@@ -41,7 +41,7 @@ class WooAPIUtility(object):
 
     def get(self, wc_endpoint, params=None, expected_status_code=200):
 
-        rs_api = self.wcapi.get(wc_endpoint,params=params)
+        rs_api = self.wcapi.get(wc_endpoint, params=params)
         self.status_code = rs_api.status_code
         self.expected_status_code = expected_status_code
         self.rs_json = rs_api.json()

@@ -4,7 +4,7 @@ import os
 import json
 import logging as logger
 from apitest.src.configs.hosts_config import API_HOSTS
-from requests_oauthlib import  OAuth1
+from requests_oauthlib import OAuth1
 from apitest.src.utilities.credentialsUtility import CredentialsUtility
 
 
@@ -28,7 +28,7 @@ class RequestsUtility(object):
 
         self.url = self.base_url + endpoint
 
-        rs_api = requests.post(url=self.url, data=json.dumps(payload), headers=headers, auth=self.auth)
+        rs_api = requests.post(url=self.url, data=json.dumps(payload), headers=headers, auth=self.auth, timeout=20)
         self.status_code = rs_api.status_code
         self.expected_status_code = expected_status_code
         self.rs_json = rs_api.json()
@@ -43,7 +43,7 @@ class RequestsUtility(object):
 
         self.url = self.base_url + endpoint
 
-        rs_api = requests.put(url=self.url, data=json.dumps(payload), headers=headers, auth=self.auth)
+        rs_api = requests.put(url=self.url, data=json.dumps(payload), headers=headers, auth=self.auth, timeout=20)
         self.status_code = rs_api.status_code
         self.expected_status_code = expected_status_code
         self.rs_json = rs_api.json()
@@ -59,7 +59,7 @@ class RequestsUtility(object):
             headers = {"Content-Type": "application/json"}
 
         self.url = self.base_url + endpoint
-        rs_api = requests.get(url=self.url, data=json.dumps(payload), headers=headers, auth=self.auth)
+        rs_api = requests.get(url=self.url, data=json.dumps(payload), headers=headers, auth=self.auth, timeout=20)
         self.status_code = rs_api.status_code
         self.expected_status_code = expected_status_code
         self.rs_json = rs_api.json()

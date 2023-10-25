@@ -1,13 +1,32 @@
 import pymysql
+import os
 import logging as logger
 from apitest.src.utilities.credentialsUtility import CredentialsUtility
+from apitest.src.configs.hosts_config import DB_HOST
 
 class DBUtility(object):
 
     def __init__(self):
         creds_helper = CredentialsUtility()
         self.creds = creds_helper.get_db_credentials()
-        self.host = 'localhost'
+        # self.host = 'localhost'
+
+        self.machine = os.environ.get('MACHINE')
+        assert self.machine, f"Environment variable 'MACHINE' must be set."
+
+        self.wp_host = os.environ.get('WP_HOST')
+        assert self.wp_host, f"Environment variable 'WP_HOST' must be set."
+
+        if self.machine == 'docker' and self.wp_host == 'local':
+            raise Exception(f"Can not run test in docker if WP_HOST=local")
+
+        self.env = os.environ.get('ENV', 'test')
+
+        self.host = DB_HOST[self.machine][self.env]['host']
+        self.socket = DB_HOST[self.machine][self.env]['socket']
+        self.port = DB_HOST[self.machine][self.env]['port']
+        self.database = DB_HOST[self.machine][self.env]['database']
+        self.table_prefix = DB_HOST[self.machine][self.env]['table_prefix']
 
     def create_connection(self):
 
