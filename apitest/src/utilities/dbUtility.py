@@ -9,7 +9,6 @@ class DBUtility(object):
     def __init__(self):
         creds_helper = CredentialsUtility()
         self.creds = creds_helper.get_db_credentials()
-        # self.host = 'localhost'
 
         self.machine = os.environ.get('MACHINE')
         assert self.machine, f"Environment variable 'MACHINE' must be set."
@@ -23,7 +22,6 @@ class DBUtility(object):
         self.env = os.environ.get('ENV', 'test')
 
         self.host = DB_HOST[self.machine][self.env]['host']
-        self.socket = DB_HOST[self.machine][self.env]['socket']
         self.port = DB_HOST[self.machine][self.env]['port']
         self.database = DB_HOST[self.machine][self.env]['database']
         self.table_prefix = DB_HOST[self.machine][self.env]['table_prefix']

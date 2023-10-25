@@ -1,13 +1,11 @@
 
 API_HOSTS = {
-    # "test": "http://http://192.168.40.158/shop/wp-json/wc/v3/", '''Use when running locally'''
     "test": "http://192.168.40.158/wp-json/wc/v3/",
     "dev": "",
     "prod": ""
 }
 
 WOO_API_HOSTS = {
-    # "test": "http://http://192.168.40.158/shop/", '''Use when running locally'''
     "test": "http://192.168.40.158/",
     "dev": "",
     "prod": ""
@@ -15,7 +13,7 @@ WOO_API_HOSTS = {
 
 DB_HOST = {
     'machine1': {
-              "test": {"host": "localhost",
+              "test": {"host": "127.0.0.1",
                        "database": "wp_",
                        "table_prefix": "wordpress",
                        "port": 3306
