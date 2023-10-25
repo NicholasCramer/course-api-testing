@@ -70,7 +70,7 @@ All Python code is in the apitest directory
 
 You can run all tests with the command `pytest`
 
-You can run groups of tests by the it's marker: 'regression', 'smoke', 'products' etc: `pytest -m smoke`
+You can run groups of tests by tagging multiple tests with a marker: 'regression', 'smoke', 'products' etc: `pytest -m smoke`
 
 You can run individual test cases by their marker as well: `pytest -m tcid40`
 
