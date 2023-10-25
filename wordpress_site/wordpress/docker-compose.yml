@@ -30,5 +30,8 @@ services:
     restart: always
     ports:
       - 3838:3306
+    extra_hosts:
+      - "host.docker.internal:127.0.0.1"
+      - "gateway.docker.internal:127.0.0.1"
 
 

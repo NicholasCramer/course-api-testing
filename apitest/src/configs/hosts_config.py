@@ -13,7 +13,7 @@ WOO_API_HOSTS = {
 
 DB_HOST = {
     'machine1': {
-              "test": {"host": "127.0.0.1",
+              "test": {"host": "host.docker.internal",
                        "database": "wp_",
                        "table_prefix": "wordpress",
                        "port": 3306

@@ -166,3 +166,4 @@ cython_debug/
 secret.txt
 env.bat
 env_docker.sh
+apitest/results
